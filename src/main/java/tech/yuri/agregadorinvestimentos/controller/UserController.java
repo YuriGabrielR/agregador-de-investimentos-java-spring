@@ -2,9 +2,11 @@ package tech.yuri.agregadorinvestimentos.controller;
 
 import jakarta.validation.Valid;
 import org.apache.coyote.Response;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tech.yuri.agregadorinvestimentos.dto.CreateUserDto;
+import tech.yuri.agregadorinvestimentos.dto.UpdateUserDto;
 import tech.yuri.agregadorinvestimentos.entity.User;
 import tech.yuri.agregadorinvestimentos.service.UserService;
 
@@ -15,6 +17,8 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/users")
 public class UserController {
+
+    @Autowired
     private UserService userService;
 
     public UserController(UserService userService) {
@@ -49,6 +53,13 @@ public class UserController {
     @DeleteMapping("/{userId}")
     public ResponseEntity deleteUser(@PathVariable("userId") String userId){
         userService.deleteById(userId);
+
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{userId}")
+    public ResponseEntity updateUser(@PathVariable("userId") String userId, @RequestBody UpdateUserDto data){
+       userService.updateUser(userId, data);
 
         return ResponseEntity.noContent().build();
     }

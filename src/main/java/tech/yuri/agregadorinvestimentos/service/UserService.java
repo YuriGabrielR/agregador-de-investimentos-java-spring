@@ -2,6 +2,7 @@ package tech.yuri.agregadorinvestimentos.service;
 
 import org.springframework.stereotype.Service;
 import tech.yuri.agregadorinvestimentos.dto.CreateUserDto;
+import tech.yuri.agregadorinvestimentos.dto.UpdateUserDto;
 import tech.yuri.agregadorinvestimentos.entity.User;
 import tech.yuri.agregadorinvestimentos.repository.UserRepository;
 
@@ -53,5 +54,25 @@ public class UserService {
         if(userExists){
             userRepository.deleteById(id);
         }
+    }
+
+    public void updateUser(String userId, UpdateUserDto data){
+        var id = UUID.fromString(userId);
+        var userEntity = userRepository.findById(id);
+
+        if(userEntity.isPresent()){
+            var user = userEntity.get();
+
+            if(data.username() != null){
+                user.setUsername(data.username());
+            }
+
+            if(data.password() != null){
+                user.setPassword(data.password());
+            }
+
+            userRepository.save(user);
+        }
+
     }
 }
