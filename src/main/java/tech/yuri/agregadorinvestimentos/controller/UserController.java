@@ -9,6 +9,7 @@ import tech.yuri.agregadorinvestimentos.entity.User;
 import tech.yuri.agregadorinvestimentos.service.UserService;
 
 import java.net.URI;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
@@ -24,5 +25,16 @@ public class UserController {
         var userId = userService.createUser(data);
 
         return ResponseEntity.created(URI.create("/users/"+ userId.toString())).build();
+    }
+
+    @GetMapping("/{userId}")
+    public ResponseEntity<User> getUserById(@PathVariable("userId") String userId){
+        var user = userService.getUserById(userId);
+
+        if(user.isPresent()) {
+            return ResponseEntity.ok(user.get());
+        }else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
