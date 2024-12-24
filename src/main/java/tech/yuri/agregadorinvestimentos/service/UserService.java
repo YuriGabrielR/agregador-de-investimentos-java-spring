@@ -45,4 +45,13 @@ public class UserService {
 
         return users;
     }
+
+    public void deleteById(String userId){
+        var id = UUID.fromString(userId);
+        var userExists = userRepository.existsById(id);
+
+        if(userExists){
+            userRepository.deleteById(id);
+        }
+    }
 }
