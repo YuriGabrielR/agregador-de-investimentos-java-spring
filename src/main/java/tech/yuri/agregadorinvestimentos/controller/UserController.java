@@ -1,5 +1,7 @@
 package tech.yuri.agregadorinvestimentos.controller;
 
+import jakarta.validation.Valid;
+import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tech.yuri.agregadorinvestimentos.dto.CreateUserDto;
@@ -18,7 +20,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody CreateUserDto data){
+    public ResponseEntity<User> createUser(@RequestBody @Valid CreateUserDto data){
         var userId = userService.createUser(data);
 
         return ResponseEntity.created(URI.create("/users/"+ userId.toString())).build();
