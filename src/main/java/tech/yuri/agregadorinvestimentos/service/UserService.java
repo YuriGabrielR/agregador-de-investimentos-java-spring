@@ -6,6 +6,7 @@ import tech.yuri.agregadorinvestimentos.entity.User;
 import tech.yuri.agregadorinvestimentos.repository.UserRepository;
 
 import java.time.Instant;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -37,5 +38,11 @@ public class UserService {
     public Optional<User> getUserById(String id){
         var userId = userRepository.findById(UUID.fromString(id));
         return  userId;
+    }
+
+    public List<User> getAllUsers(){
+        var users = userRepository.findAll();
+
+        return users;
     }
 }

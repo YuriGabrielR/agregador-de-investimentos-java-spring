@@ -9,6 +9,7 @@ import tech.yuri.agregadorinvestimentos.entity.User;
 import tech.yuri.agregadorinvestimentos.service.UserService;
 
 import java.net.URI;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -36,5 +37,12 @@ public class UserController {
         }else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping
+    public ResponseEntity<List<User>> getAllUsers(){
+        var users = userService.getAllUsers();
+
+        return ResponseEntity.ok(users);
     }
 }
