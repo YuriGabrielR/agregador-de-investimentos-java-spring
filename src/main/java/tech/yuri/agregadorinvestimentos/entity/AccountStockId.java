@@ -8,7 +8,7 @@ import java.util.UUID;
 @Embeddable
 public class AccountStockId {
 
-    @Column(name = "stock_id")
+    @Column(name = "account_id")
     private UUID accountId;
 
     @Column(name = "stock_id")
