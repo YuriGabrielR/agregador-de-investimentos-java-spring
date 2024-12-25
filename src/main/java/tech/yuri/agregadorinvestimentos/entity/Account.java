@@ -2,6 +2,7 @@ package tech.yuri.agregadorinvestimentos.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -18,6 +19,13 @@ public class Account {
     @ManyToOne
     @JoinColumn(name="id")
     private User user;
+
+    @OneToOne(mappedBy = "account")
+    @PrimaryKeyJoinColumn()
+    private BillingAddress adress;
+
+    @OneToMany(mappedBy = "account")
+    private List<AccountStock> accountsStocks;
 
     public Account() {
     }
