@@ -17,12 +17,12 @@ public class Account {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name="id")
+    @JoinColumn(name="user_id")
     private User user;
 
-    @OneToOne(mappedBy = "account")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "account")
     @PrimaryKeyJoinColumn()
-    private BillingAddress adress;
+    private BillingAddress billingAddress;
 
     @OneToMany(mappedBy = "account")
     private List<AccountStock> accountsStocks;
@@ -30,9 +30,13 @@ public class Account {
     public Account() {
     }
 
-    public Account(UUID accountId, String description) {
+    public Account(UUID accountId, String description, User user, BillingAddress billingAddress, List<AccountStock> accountsStocks)
+    {
         this.accountId = accountId;
         this.description = description;
+        this.user = user;
+        this.billingAddress = billingAddress;
+        this.accountsStocks = accountsStocks;
     }
 
     public UUID getAccountId() {
@@ -57,5 +61,14 @@ public class Account {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+
+    public List<AccountStock> getAccountsStocks() {
+        return accountsStocks;
+    }
+
+    public void setAccountsStocks(List<AccountStock> accountsStocks) {
+        this.accountsStocks = accountsStocks;
     }
 }

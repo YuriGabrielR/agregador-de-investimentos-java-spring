@@ -1,12 +1,20 @@
 package tech.yuri.agregadorinvestimentos.service;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+import tech.yuri.agregadorinvestimentos.dto.CreateAccountDto;
 import tech.yuri.agregadorinvestimentos.dto.CreateUserDto;
 import tech.yuri.agregadorinvestimentos.dto.UpdateUserDto;
+import tech.yuri.agregadorinvestimentos.entity.Account;
+import tech.yuri.agregadorinvestimentos.entity.BillingAddress;
 import tech.yuri.agregadorinvestimentos.entity.User;
+import tech.yuri.agregadorinvestimentos.repository.AccountRepository;
+import tech.yuri.agregadorinvestimentos.repository.BillingAddressRepository;
 import tech.yuri.agregadorinvestimentos.repository.UserRepository;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -15,9 +23,13 @@ import java.util.UUID;
 public class UserService {
 
     private UserRepository userRepository;
+    private AccountRepository accountRepository;
+    private BillingAddressRepository billingAddressRepository;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, AccountRepository accountRepository, BillingAddressRepository billingAddressRepository) {
         this.userRepository = userRepository;
+        this.accountRepository = accountRepository;
+        this.billingAddressRepository = billingAddressRepository;
     }
 
 
@@ -73,6 +85,20 @@ public class UserService {
 
             userRepository.save(user);
         }
+
+    }
+
+    public void createAccount(String userId, CreateAccountDto data) {
+        var id = UUID.fromString(userId);
+        var user = userRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+
+        var account = new Account(null, data.description(), user, null, new ArrayList<>());
+
+        var accountCreated = accountRepository.save(account);
+
+        var billingAdress = new BillingAddress(accountCreated.getAccountId(), data.street(), data.number(), account);
+
+
 
     }
 }

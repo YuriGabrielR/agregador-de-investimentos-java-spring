@@ -5,6 +5,7 @@ import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import tech.yuri.agregadorinvestimentos.dto.CreateAccountDto;
 import tech.yuri.agregadorinvestimentos.dto.CreateUserDto;
 import tech.yuri.agregadorinvestimentos.dto.UpdateUserDto;
 import tech.yuri.agregadorinvestimentos.entity.User;
@@ -18,7 +19,6 @@ import java.util.Optional;
 @RequestMapping("/users")
 public class UserController {
 
-    @Autowired
     private UserService userService;
 
     public UserController(UserService userService) {
@@ -63,4 +63,11 @@ public class UserController {
 
         return ResponseEntity.noContent().build();
     }
+
+    @PostMapping("/{userId}/accounts")
+    public ResponseEntity createAccount(@PathVariable("userId") String userId, @RequestBody CreateAccountDto data){
+          userService.createAccount(userId, data);
+        return ResponseEntity.ok().build();
+    }
+
 }
