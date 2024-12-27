@@ -96,9 +96,9 @@ public class UserService {
 
         var accountCreated = accountRepository.save(account);
 
-        var billingAdress = new BillingAddress(accountCreated.getAccountId(), data.street(), data.number(), account);
+        var billingAdress = new BillingAddress(null, data.street(), data.number(), account);
 
-
+        billingAddressRepository.save(billingAdress);
 
     }
 }
