@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tech.yuri.agregadorinvestimentos.dto.CreateAccountDto;
 import tech.yuri.agregadorinvestimentos.dto.CreateUserDto;
+import tech.yuri.agregadorinvestimentos.dto.GetAccountsResponseDto;
 import tech.yuri.agregadorinvestimentos.dto.UpdateUserDto;
 import tech.yuri.agregadorinvestimentos.entity.User;
 import tech.yuri.agregadorinvestimentos.service.UserService;
@@ -70,4 +71,11 @@ public class UserController {
         return ResponseEntity.ok().build();
     }
 
+    @GetMapping(value = "/{userId}/accounts")
+    public ResponseEntity<List<GetAccountsResponseDto>> getAccounts(@PathVariable("userId") String userId){
+
+       var accounts = userService.getAccounts(userId);
+
+        return ResponseEntity.ok(accounts);
+    }
 }

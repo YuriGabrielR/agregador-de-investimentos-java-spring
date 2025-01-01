@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import tech.yuri.agregadorinvestimentos.dto.CreateAccountDto;
 import tech.yuri.agregadorinvestimentos.dto.CreateUserDto;
+import tech.yuri.agregadorinvestimentos.dto.GetAccountsResponseDto;
 import tech.yuri.agregadorinvestimentos.dto.UpdateUserDto;
 import tech.yuri.agregadorinvestimentos.entity.Account;
 import tech.yuri.agregadorinvestimentos.entity.BillingAddress;
@@ -100,5 +101,16 @@ public class UserService {
 
         billingAddressRepository.save(billingAdress);
 
+    }
+
+    public List<GetAccountsResponseDto> getAccounts(String userId) {
+        var id = UUID.fromString(userId);
+        var user = userRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+
+        var accounts = user.getAccounts().stream().map(account ->
+                new GetAccountsResponseDto(account.getAccountId().toString(), account.getDescription())
+        ).toList();
+
+        return accounts;
     }
 }
