@@ -15,9 +15,11 @@ public class AccountController {
     }
 
     @PostMapping("/{accountId}/stocks")
-    public ResponseEntity<Void> associateStock(
-            @PathVariable("accountId") String accountId, @RequestBody AssociateAccountStockDto data
-    ){
+    public ResponseEntity associateStock(
+            @PathVariable("accountId") String accountId, @RequestBody AssociateAccountStockDto data){
 
+        accountService.associateStock(accountId, data);
+
+        return ResponseEntity.noContent().build();
     }
 }
