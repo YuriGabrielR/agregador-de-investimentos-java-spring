@@ -10,15 +10,11 @@
 
 ###
 
-<p align="left">API criada no padrão REST, seguindo princípios da arquitetura S.O.L.I.D, para o desenvolvimento da mesma utilizei o Java, Spring Boot para serviços web, JPA para persistência de dados, juntamente do ORM Hibernate, para facilitar operações com o banco de dados MySQL. <br><br>Utilizei Docker para rodar o projeto e também para configuração do MySQL.</p>
+<p align="left">A ideia do projeto era simular uma carteira de investimentos da bolsa de valores, na api em questão é possível criar usuários e associa-lo a contas e ações da bolsa de valores!</p>
 
 ###
 
 <h2 align="left">🛠 Tecnologias utilizadas</h2>
-
-###
-
-<p align="left">A ideia do projeto era simular uma carteira de investimentos da bolsa de valores, na api em questão é possível criar usuários e associa-lo a contas e ações da bolsa de valores!</p>
 
 ###
 
@@ -32,6 +28,25 @@
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" height="40" alt="mysql logo"  />
   <img width="12" />
   <img src="https://cdn.simpleicons.org/docker/2496ED" height="40" alt="docker logo"  />
+</div>
+
+###
+
+<p align="left">API criada no padrão REST, seguindo princípios da arquitetura S.O.L.I.D, para o desenvolvimento da mesma utilizei o Java, Spring Boot para serviços web, JPA para persistência de dados, juntamente do ORM Hibernate, para facilitar operações com o banco de dados MySQL. <br><br>Utilizei Docker para rodar o projeto e também para configuração do MySQL.</p>
+
+###
+
+<h2 align="left">🎨 Redes sociais</h2>
+
+###
+
+<div align="left">
+  <a href="https://www.linkedin.com/in/yurigabrielramos/" target="_blank">
+    <img src="https://raw.githubusercontent.com/maurodesouza/profile-readme-generator/master/src/assets/icons/social/linkedin/default.svg" width="52" height="40" alt="linkedin logo"  />
+  </a>
+  <a href="https://api.whatsapp.com/send?phone=5512981946294" target="_blank">
+    <img src="https://raw.githubusercontent.com/maurodesouza/profile-readme-generator/master/src/assets/icons/social/whatsapp/default.svg" width="52" height="40" alt="whatsapp logo"  />
+  </a>
 </div>
 
 ###
