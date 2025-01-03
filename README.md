@@ -32,7 +32,21 @@
 
 ###
 
-<p align="left">API criada no padrão REST, seguindo princípios da arquitetura S.O.L.I.D, para o desenvolvimento da mesma utilizei o Java, Spring Boot para serviços web, JPA para persistência de dados, juntamente do ORM Hibernate, para facilitar operações com o banco de dados MySQL. <br><br>Utilizei Docker para rodar o projeto e também para configuração do MySQL.</p>
+<p align="left">API criada no padrão REST, seguindo princípios da arquitetura S.O.L.I.D, para o desenvolvimento da mesma utilizei o Java, Spring Boot para serviços web, JPA para persistência de dados, juntamente do ORM Hibernate, para facilitar operações com o banco de dados MySQL. <br><br>Utilizei Docker para rodar o projeto e também para configuração e inicialização do servidor MySQL.</p>
+
+###
+
+<h2 align="left">🛢️ DIAGRAMA DO BANCO DE DADOS (DER)</h2>
+
+###
+
+<p align="left">Diagrama criado para esta aplicação, representados na pasta Entity com seus devidos relacionamentos.</p>
+
+###
+
+<div align="center">
+  <img height="300" src="https://github.com/user-attachments/assets/4397f868-5da4-45f2-8f5f-df0826066218"  />
+</div>
 
 ###
 
